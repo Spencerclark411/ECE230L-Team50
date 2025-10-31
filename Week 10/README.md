@@ -1,5 +1,5 @@
 # Sequential Circuits: Latches
-	Cole Nugent
+	Cole Nugent, Spencer Clark
 In this lab, you learned about the basic building block of sequential circuits: the latch.
 
 ## Rubric
