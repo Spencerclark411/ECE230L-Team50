@@ -1,9 +1,9 @@
 module ripple_counter(
-    input Store, Reset,     // store is or clock we save on the posedge of store( clock)
+    input Store, Reset,     // store is our clock we save on the posedge of store (clock)
     output [2:0] Q
 );
 
-    wire w1, w2;
+    //Use NotQ if you want to change counting direction
 
     t_flipflop t_inst1(
         .T(1),

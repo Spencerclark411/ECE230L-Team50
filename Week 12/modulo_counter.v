@@ -8,6 +8,9 @@ module modulo_counter(
     wire [3:0] dqw;
     wire [2:0] ayw; 
     wire compw;
+    wire full_reset;
+    
+    assign full_reset = Reset | compw;
     
     comparator comp_inst(
         .b0(dqw[0]),
@@ -24,9 +27,7 @@ module modulo_counter(
         .Q(dqw[3])
     );
     
-    
-    
-    
+    //First adder and dff
     full_adder add_inst1(
         .Cin(0),
         .A(dqw[0]),
@@ -34,21 +35,15 @@ module modulo_counter(
         .Y(ayw[0]),
         .Cout(coutw[0])
     );
-    
-    
-    
-    
-    
+
     d_flipflop d_inst1(
         .D(ayw[0]),
-        .Reset(compw),
+        .Reset(full_reset),
         .Store(Store),
         .Q(dqw[0])
     );
-    
-    
-    
-    
+
+    //Second adder and dff
     full_adder add_inst2(
         .Cin(coutw[0]),
         .A(dqw[1]),
@@ -59,14 +54,12 @@ module modulo_counter(
     
     d_flipflop d_inst2(
         .D(ayw[1]),
-        .Reset(compw),
+        .Reset(full_reset),
         .Store(Store),
         .Q(dqw[1])
     );
-    
-    
-    
-    
+
+    //Third adder and dff
     full_adder add_inst3(
         .Cin(coutw[1]),
         .A(dqw[2]),
@@ -77,7 +70,7 @@ module modulo_counter(
     
     d_flipflop d_inst3(
         .D(ayw[2]),
-        .Reset(compw),
+        .Reset(full_reset),
         .Store(Store),
         .Q(dqw[2])
     );

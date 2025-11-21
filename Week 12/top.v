@@ -4,7 +4,7 @@ module top(
 );
 
     ripple_counter ripple(
-        .Reset(btnU),  // you need to add the reset signal somewher
+        .Reset(btnU),
         .Store(btnC),
         .Q(led[2:0])
     );
