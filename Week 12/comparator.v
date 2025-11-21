@@ -3,6 +3,6 @@ module comparator(
     output Reset
 );
 
-    assign Reset = (b2 & b1) ? 1 : 0;
+    assign Reset = (b2 & b0) ? 1 : 0;
 
 endmodule
